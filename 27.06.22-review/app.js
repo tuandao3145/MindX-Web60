@@ -1,4 +1,4 @@
-Car = function (make, speed) {
+const Car = function (make, speed) {
 	this.make = make;
 	this.speed = speed;
 };
