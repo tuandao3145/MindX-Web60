@@ -1,7 +1,7 @@
 // const
 const url = "https://api.github.com/users/";
 
-async function getData(user) {
+function getData(user) {
 	let users_data_url = url + user;
 	let data = fetch(users_data_url)
 		.then((response) => response.json())
