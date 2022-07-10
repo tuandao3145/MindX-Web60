@@ -1,43 +1,38 @@
-// ex1
-// const mySort = (numList) => {
-// 	let result = [];
-// 	numList.map((num) => {
-// 		if (num % 2 === 0 && !result.includes(num)) {
-// 			result.push(num);
-// 		}
-// 	});
-// 	console.log(result);
-// };
+// ex 1
+let data = require("./students.json");
+let student = JSON.stringify(data);
 
-// let a = [1, 2, 2, 3, 4, 4, 5, 6, 7, 8, 8, 9, 9];
+// log as query string
+const querystring = require("node:querystring");
+let queryStringResult = querystring.stringify(data);
+console.log(queryStringResult);
 
-// mySort(a);
+// log as object
+console.log(data);
 
-// ex2
+// log as string
+console.log(student);
 
-// let data = { name: "tuananh", children: ["com", "ngo"], age: "31" };
-// const querystring = require("node:querystring");
-// let result = querystring.stringify(data);
-// console.log(result);
+// ex 2
 
-// ex3
-// const bd = require("./birthday");
-
-// let date = "1996/08/21";
-
-// console.log(bd.getBirthday(date).toLocaleDateString());
-
-// ex4
+// server
 const http = require("http");
 
+const port = 5001;
+
 const server = http.createServer((req, res) => {
-	if (req.url === "/") {
-		res.end("Welcome to homepage");
-	} else if (res.url === "/about") {
-		res.end("Here is About page");
+	res.statusCode = 200;
+	res.setHeader("Content-Type", "text/html");
+
+	if (req.url === "/index") {
+		res.end(`<h1>đây là trang chủ</h1>`);
+	} else if (req.url === "/about") {
+		res.end(`<h1>${student}</h1>`);
 	} else {
-		res.end("Not found");
+		res.end(`<h1>Đường dẫn này không tồn tại</h1>`);
 	}
 });
 
-server.listen(5001);
+server.listen(port, () => {
+	console.log(`Server running at port ${port}`);
+});
