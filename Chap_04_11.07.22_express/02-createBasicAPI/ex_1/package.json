@@ -1,0 +1,17 @@
+{
+	"name": "create-basic-api",
+	"version": "1.0.0",
+	"description": "learn how to create a basic API",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon index.js"
+	},
+	"author": "tuandao",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.18.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.19"
+	}
+}
