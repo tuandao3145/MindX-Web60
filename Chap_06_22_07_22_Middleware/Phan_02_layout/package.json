@@ -1,7 +1,7 @@
 {
-	"name": "learning-middleware",
+	"name": "chia-layout",
 	"version": "1.0.0",
-	"description": "this project for learning middleware",
+	"description": "",
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon index.js"
@@ -9,7 +9,11 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"express": "^4.18.1"
+		"@fortawesome/fontawesome-free": "^6.1.1",
+		"bootstrap": "^5.2.0",
+		"ejs": "^3.1.8",
+		"express": "^4.18.1",
+		"jquery": "^3.6.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.19"
