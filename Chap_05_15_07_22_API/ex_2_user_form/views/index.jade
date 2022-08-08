@@ -1,0 +1,41 @@
+html
+head
+    title #{title} 
+    meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", rel="stylesheet")
+body
+    div.container
+        .card(style = "margin-top: 5%;")
+            h3.card-header Registration Form
+            .card-body
+                form(action="/user-info", method="post", enctype="application/x-www-form-urlencoded")
+                    .form-group
+                        label(for="firstName") First Name
+                        input.form-control(type="text", name="firstName", placeholder="William", required)
+                        div #{err_data.firstNameErr}
+                    .form-group
+                        label(for="lastName") Last Name
+                        input.form-control(type="text", name="lastName", placeholder="Butcher", required)
+                        div #{lastNameErr}
+                    .form-group
+                        label(for="birthday") Birthday
+                        input.form-control(type="number", name="birthday")
+                        div #{birthdayErr}
+                    .form-group
+                        label(for="gender") Gender
+                        br
+                        input(type="radio", name="gender", value="male", checked)
+                        |  Male
+                        br
+                        input(type="radio", name="gender", value="female")
+                        |  Female
+                        div #{genderErr}
+                    .form-group
+                        label(for="email") Email
+                        input.form-control(type="text", name="email", required)
+                        div #{emailErr}
+                    .form-group
+                        label(for="phone") Phone Number
+                        input.form-control(type="number", name="phone")
+                        div #{phoneErr}
+                    button.btn.btn-block.btn-success(type="submit") Submit
