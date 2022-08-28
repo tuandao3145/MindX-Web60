@@ -1,5 +1,5 @@
 // libraries
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { List, Row, Col, Popconfirm, notification, Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
@@ -64,31 +64,27 @@ export const ManagerMember = () => {
 			intro: values.intro,
 		};
 		console.log(values);
-		setMembers([newMember, ...members]);
+		setMembers([...members, newMember]);
 		hideModal();
 	};
 
+	// store previous value for case clear search bar
+	const prevState = useRef(members);
+
 	// search member
 	const handleSearch = (keyword) => {
-		console.log(keyword);
-		const filter = members.filter((item) =>
+		const filter = prevState.current.filter((item) =>
 			`${item.first_name} ${item.last_name}`
 				.toLowerCase()
 				.includes(keyword.toLowerCase())
 		);
 		setMembers(filter);
-		if (keyword === "") {
-			setMembers(data);
-		}
 	};
 
 	return (
 		<>
 			<Row>
-				<SearchBar
-					style={({ float: "left" }, { margin: "15px" })}
-					onSearch={handleSearch}
-				/>
+				<SearchBar style={{ margin: "15px" }} onSearch={handleSearch} />
 			</Row>
 			<Row>
 				<Col span={8}>
