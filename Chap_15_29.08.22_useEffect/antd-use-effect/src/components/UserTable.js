@@ -12,6 +12,12 @@ const columnUsers = [
 		title: "Name",
 		dataIndex: "name",
 		render: (name) => `${name.title} ${name.first} ${name.last}`,
+		sorter: (a, b) => {
+			let aName = `${a.name.title}${a.name.first}${a.name.last}`;
+			let bName = `${b.name.title}${b.name.first}${b.name.last}`;
+			return aName.localeCompare(bName);
+		},
+		sortDirections: ["ascend"],
 	},
 	{
 		title: "Email",
@@ -21,6 +27,17 @@ const columnUsers = [
 	{
 		title: "Gender",
 		dataIndex: "gender",
+		filters: [
+			{
+				text: "Male",
+				value: "male",
+			},
+			{
+				text: "Female",
+				value: "female",
+			},
+		],
+		onFilter: (value, record) => record.gender.indexOf(value) === 0,
 	},
 	{
 		title: "Phone",
@@ -59,11 +76,13 @@ export const UserTable = () => {
 	}, []);
 
 	// pagination loading
-	const onChangeTable = () => {
+	const onChangeTable = (pagination, filters, sorter, extra) => {
 		setIsLoading(true);
 		setTimeout(() => {
 			setIsLoading(false);
 		}, 500);
+
+		console.log("params", pagination, filters, sorter, extra);
 	};
 
 	return (
